@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* password */
+#lock {
+  background: #111;
+}
+
+/* intro */
+#page1 {
+  display: none;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+/* main */
+#page2 {
+  display: none;
+  text-align: center;
+  background: radial-gradient(circle at center, #020024, #090979, #000);
+  position: relative;
+  overflow: hidden;
+}
+
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#text {
+  max-width: 600px;
+  font-size: 22px;
+  z-index: 2;
+}
+
+.images-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* المسافة بين الصورتين */
+  margin-top: 20px;
+}
+
+.images-container img {
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00ccff;
+}
+
+video {
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ff69b4;
+}
+
+/* stars */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #00ccff;
+  box-shadow: 0 0 10px #00ccff;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%,100% {opacity: 0;}
+  50% {opacity: 1;}
+}
+
+/* hearts */
+.heart {
+  position: fixed;
+  color: red;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="lock" class="page">
+  <h2>🔐 Enter our secret ❤️</h2>
+  <input id="pass" placeholder="Our special word">
+  <button onclick="check()">Enter 💖</button>
+</div>
+
+<!-- INTRO -->
+<div id="page1" class="page">
+  <h1>🎁 I made this for you ❤️</h1>
+  <button onclick="start()">Open 😘</button>
+</div>
+
+<!-- MAIN -->
+<div id="page2" class="page">
+  <h1>🎂 Happy Birthday ❤️</h1>
+  <div id="text"></div>
+
+  <!-- الصور جنب بعضها -->
+  <div class="images-container">
+    <img src="https://files.catbox.moe/tc6hz8.jpeg">
+    <img src="https://files.catbox.moe/thxoci.jpeg">
+  </div>
+
+  <!-- الفيديو -->
+  <video id="myVideo" width="300" autoplay loop muted>
+    <source src="https://files.catbox.moe/qlgxcv.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- الموسيقى -->
+<audio id="music" loop>
+  <source src="https://files.catbox.moe/ve20bn.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+// 🔐 PASSWORD
+function check() {
+  let p = document.getElementById("pass").value;
+  if (p === "3omrii zizow") {
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("page1").style.display = "flex";
+  } else {
+    alert("Wrong password 😢");
+  }
+}
+
+// 🌌 stars
+function createStars() {
+  let container = document.getElementById("page2");
+  for (let i = 0; i < 120; i++) {
+    let s = document.createElement("div");
+    s.className = "star";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    container.appendChild(s);
+  }
+}
+
+// 💌 message
+let msg = "Zizo 3omri happy birthday a7san Happy birthday fel 3alam l a7san wa7ed 3ref f 2025 o a7san w93at fiha o hadi a7san 7aja 3awtani ghadi twe9et anani ghadi nkoun m3ak o nti ghadi diri 18 3am o had l 3emer fahoma rah 3mer zwin idkhel 3la chi wa7ed o nta m3ah , 3omri Ghadi n3awed ngolhalik ana m3ak o kanbghik bzafff o dima m3ak 3amrni ghadi namchi o nkhlik , o had tsawer homa l bidayat dyalna la 3a9lati kna 7chamanin bzaf o makanbynouch l b3diyatna dak l 7ob li dak l bakhel dyalna o 7na daba ra7na b7ala chi jouj 9rab wakha 7na b3ad 3la b3diyatna ghadi ngolik a3omri dima diri f balek b7ala 7na 9rab o ha w9ita o dayza o ghadi nkouno 9rab ncha3lah la bgha lah , happy Birthday 3omriiiiiiiiiiii kanbghik bzafff kantma ikoun hada a7san 3id milad daz 3ndek o ghadi idouz 3ndek wakha nti makatfar7ich f hadchi walakin had l mara ghadi tfar7i la kanti 9riti hadchi li kharej men galeb i love you zeyneb 🫶🏻❤️";
+let i = 0;
+
+function start() {
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "flex";
+
+  let music = document.getElementById("music");
+  music.play();
+
+  createStars();
+  type();
+}
+
+// typing effect
+function type() {
+  if (i < msg.length) {
+    document.getElementById("text").innerHTML += msg.charAt(i);
+    i++;
+    setTimeout(type, 40);
+  }
+}
+
+// ❤️ القلوب الطايرة
+setInterval(() => {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 5000);
+}, 300);
+
+</script>
+
+</body>
+</html>
